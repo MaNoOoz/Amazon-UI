@@ -33,9 +33,12 @@ class _CartScreenState extends State<CartScreen> {
         ),
       ),
       trailing: Text(
-        '\$${cart[index].price.toStringAsFixed(2)}',
+
+        '${(products[index].price.toStringAsFixed(2))}'+
+        ' ريال ',
+        textDirection: TextDirection.rtl,
         style: TextStyle(
-          color: Colors.orange,
+          color: Colors.red[800],
           fontSize: 16.0,
           fontWeight: FontWeight.bold,
         ),
@@ -45,13 +48,18 @@ class _CartScreenState extends State<CartScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: Text(
-          'Shopping Cart (${cart.length})',
-          style: TextStyle(color: Colors.black),
+          'سلة التسوق',
+          textDirection: TextDirection.rtl,
+          style: TextStyle(
+            color: Colors.black,
+          ),
         ),
       ),
       body: ListView.separated(
@@ -70,7 +78,7 @@ class _CartScreenState extends State<CartScreen> {
         color: Colors.orange,
         child: Center(
           child: Text(
-            'PLACE ORDER (\$336.39)',
+            'إتمام عملية الشراء',
             style: TextStyle(
               color: Colors.white,
               fontSize: 20.0,
