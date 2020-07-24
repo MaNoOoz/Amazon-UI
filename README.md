@@ -2,5 +2,5 @@
 
 A new Flutter project.
 
-![Screenshot](apture.png)
-![Screenshot](Capture.png)
+![Screenshot](apture.PNG)
+![Screenshot](Capture.PNG)
