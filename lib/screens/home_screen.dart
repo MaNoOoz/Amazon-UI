@@ -5,7 +5,6 @@ import 'package:flutter_amazon_ui_redesign/Utili/Helpers.dart';
 import 'package:flutter_amazon_ui_redesign/models/models.dart';
 import 'package:flutter_amazon_ui_redesign/widgets/ProductList.dart';
 import 'package:flutter_images_slider/flutter_images_slider.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'cart_screen.dart';
@@ -94,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      ' مرحباً. تسجيل الدخول',
+                      ' مرحباً.  MaNoOoz',
                       style: TextStyle(color: Colors.white, fontSize: 23),
                     ),
                   )),
@@ -335,7 +334,6 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: ListView(
         children: <Widget>[
-
           SizedBox(height: 15.0),
           CatList(
             icons: mIcons,
@@ -354,21 +352,21 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           ProductItem(0),
 
-          Image.network(offersImages[0]),
+          Image.asset(offersImages2[0]),
           Divider(
             height: 5,
           ),
-          Image.network(offersImages[1]),
-          Divider(
-            height: 5,
-          ),
-
-          Image.network(offersImages[2]),
+          Image.asset(offersImages2[1]),
           Divider(
             height: 5,
           ),
 
-          Image.network(offersImages[3]),
+          Image.asset(offersImages2[2]),
+          Divider(
+            height: 5,
+          ),
+
+          Image.asset(offersImages2[3]),
 
           ProductList(
             title: 'عروض اليوم',
@@ -376,11 +374,11 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           ProductList(
             title: 'آلعاب آطفال',
-            products: products,
+            products: toys,
           ),
           ProductList(
-            title: 'الإلكترونيات',
-            products: products,
+            title: 'الموبايلات',
+            products: mobiles,
           ),
 //          ProductCarousel(
 //            title: 'Popular Books',
@@ -421,10 +419,11 @@ class _HomeScreenState extends State<HomeScreen> {
 //                ),
 //              );
 //            }),
+
           /// static
           items: maping<Widget>(imgList, (index, i) {
             return Container(
-                child: Image.network(
+                child: Image.asset(
               i,
               width: screenwidth,
               scale: 1,
@@ -432,99 +431,6 @@ class _HomeScreenState extends State<HomeScreen> {
           }),
         ),
       ),
-    );
-  }
-
-  Widget noonBottomNav() {
-    return CupertinoTabBar(
-      iconSize: 22,
-      //          key: key,
-      inactiveColor: Colors.grey,
-      //      border: Border.all(color: Colors.grey, width: 1),
-      currentIndex: _currentTab,
-      onTap: (int index) {
-        if (index == 2) {
-          //            openDialog();
-        }
-        setState(() {
-          _currentTab = index;
-        });
-      },
-      activeColor: Colors.amber[400].withOpacity(0.5),
-
-      items: [
-        BottomNavigationBarItem(
-          title: Text(
-            'Home',
-            style: TextStyle(color: Colors.black45),
-          ),
-          activeIcon: Icon(
-            FontAwesomeIcons.houseUser,
-            size: 28,
-          ),
-          icon: Icon(
-            FontAwesomeIcons.houseUser,
-            //              color: Colors.green,
-          ),
-        ),
-        BottomNavigationBarItem(
-          title: Text(
-            'Categories',
-            style: TextStyle(color: Colors.black45),
-          ),
-          activeIcon: Icon(
-            Icons.category,
-            size: 28,
-          ),
-          icon: Icon(
-            Icons.category,
-            //              color: Colors.amber,
-          ),
-        ),
-        BottomNavigationBarItem(
-          title: Text(
-            'Deals',
-            style: TextStyle(color: Colors.black45),
-          ),
-          activeIcon: ImageIcon(
-            AssetImage('assets/images/sale.png'),
-            size: 28,
-          ),
-
-          //          icon: Icon(IconData(0xe800, fontFamily: "dealfont", fontPackage: "dealfont")),
-          icon: ImageIcon(
-            AssetImage('assets/images/sale.png'),
-            color: Colors.blue,
-          ),
-        ),
-        BottomNavigationBarItem(
-          title: Text(
-            'My Account',
-            style: TextStyle(color: Colors.black45),
-          ),
-          activeIcon: Icon(
-            Icons.person,
-            size: 28,
-          ),
-          icon: Icon(
-            Icons.person_outline, //              color: Colors.blue,
-          ),
-        ),
-        BottomNavigationBarItem(
-          title: Text(
-            'Cart',
-            style: TextStyle(color: Colors.black45),
-          ),
-          activeIcon: Icon(
-            Icons.shopping_cart,
-            size: 28,
-          ),
-          icon: Icon(
-            Icons.shopping_cart,
-            //              color: Colors.deepOrangeAccent,
-          ),
-        ),
-      ],
     );
   }
 
@@ -537,3 +443,95 @@ class _HomeScreenState extends State<HomeScreen> {
     return result;
   }
 }
+//Widget noonBottomNav() {
+//  return CupertinoTabBar(
+//    iconSize: 22,
+//    //          key: key,
+//    inactiveColor: Colors.grey,
+//    //      border: Border.all(color: Colors.grey, width: 1),
+//    currentIndex: _currentTab,
+//    onTap: (int index) {
+//      if (index == 2) {
+//        //            openDialog();
+//      }
+//      setState(() {
+//        _currentTab = index;
+//      });
+//    },
+//    activeColor: Colors.amber[400].withOpacity(0.5),
+//
+//    items: [
+//      BottomNavigationBarItem(
+//        title: Text(
+//          'Home',
+//          style: TextStyle(color: Colors.black45),
+//        ),
+//        activeIcon: Icon(
+//          FontAwesomeIcons.houseUser,
+//          size: 28,
+//        ),
+//        icon: Icon(
+//          FontAwesomeIcons.houseUser,
+//          //              color: Colors.green,
+//        ),
+//      ),
+//      BottomNavigationBarItem(
+//        title: Text(
+//          'Categories',
+//          style: TextStyle(color: Colors.black45),
+//        ),
+//        activeIcon: Icon(
+//          Icons.category,
+//          size: 28,
+//        ),
+//        icon: Icon(
+//          Icons.category,
+//          //              color: Colors.amber,
+//        ),
+//      ),
+//      BottomNavigationBarItem(
+//        title: Text(
+//          'Deals',
+//          style: TextStyle(color: Colors.black45),
+//        ),
+//        activeIcon: ImageIcon(
+//          AssetImage('assets/images/sale.png'),
+//          size: 28,
+//        ),
+//
+//        //          icon: Icon(IconData(0xe800, fontFamily: "dealfont", fontPackage: "dealfont")),
+//        icon: ImageIcon(
+//          AssetImage('assets/images/sale.png'),
+//          color: Colors.blue,
+//        ),
+//      ),
+//      BottomNavigationBarItem(
+//        title: Text(
+//          'My Account',
+//          style: TextStyle(color: Colors.black45),
+//        ),
+//        activeIcon: Icon(
+//          Icons.person,
+//          size: 28,
+//        ),
+//        icon: Icon(
+//          Icons.person_outline, //              color: Colors.blue,
+//        ),
+//      ),
+//      BottomNavigationBarItem(
+//        title: Text(
+//          'Cart',
+//          style: TextStyle(color: Colors.black45),
+//        ),
+//        activeIcon: Icon(
+//          Icons.shopping_cart,
+//          size: 28,
+//        ),
+//        icon: Icon(
+//          Icons.shopping_cart,
+//          //              color: Colors.deepOrangeAccent,
+//        ),
+//      ),
+//    ],
+//  );
+//}

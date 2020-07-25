@@ -151,7 +151,7 @@ class CatList extends StatelessWidget {
           child: ListView.builder(
             padding: EdgeInsets.symmetric(horizontal: 10.0),
             scrollDirection: Axis.horizontal,
-            itemCount: catNames.length,
+            itemCount: icons.length,
             itemBuilder: (BuildContext context, int index) {
               return _Listitem(index);
             },

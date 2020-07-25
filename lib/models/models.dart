@@ -18,12 +18,12 @@ final List<Product> products = [
   Product(
     imageUrl: 'assets/images/mxmaster.jpg',
     name: 'Logitech MX Master 2S',
-    price: 300.95 ,
+    price: 300.95,
     description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A condimentum vitae sapien pellentesque habitant morbi tristique senectus et. Auctor neque vitae tempus quam pellentesque nec. Volutpat consequat mauris nunc congue nisi. Commodo ullamcorper a lacus vestibulum sed arcu non odio euismod. Aliquam id diam maecenas ultricies mi eget.',
   ),
   Product(
-    imageUrl: 'assets/images/blueyeti.jpg',
+    imageUrl: 'assets/images/z1.jpg',
     name: 'Blue Yeti USB Microphone',
     price: 109.99,
     description:
@@ -51,7 +51,46 @@ final List<Product> products = [
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A condimentum vitae sapien pellentesque habitant morbi tristique senectus et. Auctor neque vitae tempus quam pellentesque nec. Volutpat consequat mauris nunc congue nisi. Commodo ullamcorper a lacus vestibulum sed arcu non odio euismod. Aliquam id diam maecenas ultricies mi eget.',
   ),
 ];
+final List<Product> mobiles = [
+  Product(
+    imageUrl: 'assets/images/a5.jpg',
+    name: 'IPhone 11 Pro',
+    price: 300.95,
+    description:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A condimentum vitae sapien pellentesque habitant morbi tristique senectus et. Auctor neque vitae tempus quam pellentesque nec. Volutpat consequat mauris nunc congue nisi. Commodo ullamcorper a lacus vestibulum sed arcu non odio euismod. Aliquam id diam maecenas ultricies mi eget.',
+  ),
+  Product(
+    imageUrl: 'assets/images/a6.jpg',
+    name: 'Samsung S10 Ultra (256)',
+    price: 109.99,
+    description:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A condimentum vitae sapien pellentesque habitant morbi tristique senectus et. Auctor neque vitae tempus quam pellentesque nec. Volutpat consequat mauris nunc congue nisi. Commodo ullamcorper a lacus vestibulum sed arcu non odio euismod. Aliquam id diam maecenas ultricies mi eget.',
+  ),
+  Product(
+    imageUrl: 'assets/images/a7.jpg',
+    name: 'IPhone XR Yellow ',
+    price: 1199.99,
+    description:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A condimentum vitae sapien pellentesque habitant morbi tristique senectus et. Auctor neque vitae tempus quam pellentesque nec. Volutpat consequat mauris nunc congue nisi. Commodo ullamcorper a lacus vestibulum sed arcu non odio euismod. Aliquam id diam maecenas ultricies mi eget.',
+  ),
+  Product(
+    imageUrl: 'assets/images/a8.jpg',
+    name: 'Samsung Note 10 Plus (128)',
+    price: 88.99,
+    description:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A condimentum vitae sapien pellentesque habitant morbi tristique senectus et. Auctor neque vitae tempus quam pellentesque nec. Volutpat consequat mauris nunc congue nisi. Commodo ullamcorper a lacus vestibulum sed arcu non odio euismod. Aliquam id diam maecenas ultricies mi eget.',
+  ),
+];
+final List<Product> toys = [
+  Product(
+    imageUrl: 'assets/images/gear_vr.jpg',
+    name: 'Samsung VR',
+    price: 300.95,
+    description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A condimentum vitae sapien pellentesque habitant morbi tristique senectus et. Auctor neque vitae tempus quam pellentesque nec. Volutpat consequat mauris nunc congue nisi. Commodo ullamcorper a lacus vestibulum sed arcu non odio euismod. Aliquam id diam maecenas ultricies mi eget.',
+  ),
 
+];
 final List<Product> books = [
   Product(
     imageUrl: 'assets/images/thirddoor.jpg',
@@ -128,21 +167,32 @@ class Cat {
 
   Cat({this.name});
 }
-//final List<String> imgList2 = [
-//  'assets/images/1.png',
-//  'assets/images/2.jpg',
-//  'assets/images/3.jpg',
-//  'assets/images/4.jpg',
-//];
+
+//static
 final List<String> imgList = [
+  'assets/images/s1.jpg',
+  'assets/images/s2.jpg',
+  'assets/images/s3.jpg',
+  'assets/images/s4.jpg',
+];
+/// Network
+final List<String> imgList2 = [
   'https://images-na.ssl-images-amazon.com/images/G/40/Events/2020/BSS20/GW_MobileHero_AMZ_Basics_1242x450_ar._CB409600059_SY300_.jpg',
   'https://images-na.ssl-images-amazon.com/images/G/40/Events/BSS/GW/GW_MobileHero_Electronics_1242x450_ar._CB409624444_SY300_.jpg',
   'https://images-na.ssl-images-amazon.com/images/G/40/Events/BSS/GW/GW_MobileHero_Supermarket_1242x450_ar._CB409624172_SY300_.jpg',
   'https://images-na.ssl-images-amazon.com/images/G/40/Events/BSS/GW/coupon/GW_MobileHero_Coupon_1242x450_ar._CB409667589_SY300_.jpg',
 ];
+/// Network
 final List<String> offersImages = [
   'https://images-na.ssl-images-amazon.com/images/G/40/Events/BSS/GW/GW_MobileHero_BSS_1242x450_ar2._SX1242_CB409621248_.jpg',
   'https://images-na.ssl-images-amazon.com/images/G/40/KSA-hq/2020/img/Apparel/XCM_2Manual_1230371_KSA_A_SA_BSS_GW_BB_Fashion_ar_3204340_1242x450_2Xundefined._SX1242_CB409313934_.jpg',
   'https://images-na.ssl-images-amazon.com/images/G/40/Events/BSS/GW/https://images-na.ssl-images-amazon.com/images/G/40/Gateway/Sunrise/OHL/Event/GW_BB_Appliances_1242x450_AR._SX1242_CB409616719_.jpg',
   'https://images-na.ssl-images-amazon.com/images/G/40/Events/BSS/GW/https://images-na.ssl-images-amazon.com/images/G/40/Gateway/Sunrise/Consumables/GW_MobileHero_Personal_care_1242x450_ar._SX1242_CB409629054_.jpg',
+];
+/// Static
+final List<String> offersImages2 = [
+   'assets/images/d1.jpg',
+   'assets/images/d2.jpg',
+   'assets/images/b1.jpg',
+   'assets/images/s4.jpg',
 ];
