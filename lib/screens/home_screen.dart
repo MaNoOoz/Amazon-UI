@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:emojis/emojis.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +12,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'cart_screen.dart';
 
 class HomeScreen extends StatefulWidget {
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -17,8 +20,21 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _current;
   int _currentTab = 0;
+  var cartitems = <Product>[];
+  var staticList = <Product>[];
+
   GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
   var message = 'Made with ${Emojis.redHeart} by MaNoOoz.';
+
+  Product product;
+
+
+  @override
+  void initState() {
+    super.initState();
+    staticList = products;
+
+  }
 
   Widget Search() {
     return Container(
@@ -60,168 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
       key: _drawerKey,
 //      bottomNavigationBar: noonBottomNav(),
 
-      drawer: Drawer(
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-//            UserAccountsDrawerHeader(
-//              accountName: Text("Ashish Rawat"),
-//              accountEmail: Text("ashishrawat2911@gmail.com"),
-//              currentAccountPicture: CircleAvat ar(
-//                backgroundColor:
-//                    Theme.of(context).platform == TargetPlatform.iOS
-//                        ? Colors.blue
-//                        : Colors.white,
-//                child: Text(
-//                  "A",
-//                  style: TextStyle(fontSize: 40.0),
-//                ),
-//              ),
-//            ),
-            DrawerHeader(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  CircleAvatar(
-                    radius: 15.0,
-                    backgroundColor: Colors.white,
-                    backgroundImage: AssetImage("assets/images/man.png"),
-                  ),
-                  Expanded(
-                      child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      ' مرحباً.  MaNoOoz',
-                      style: TextStyle(color: Colors.white, fontSize: 23),
-                    ),
-                  )),
-                ],
-              ),
-              decoration: BoxDecoration(
-                color: Colors.blueGrey[900],
-              ),
-            ),
-            ListTile(
-              title: Text('الحساب'),
-              onTap: () {
-                // Update the state of the app.
-                // ...
-              },
-            ),
-            ListTile(
-              title: Text('المشتريات'),
-              onTap: () {
-                Navigator.pop(context);
-                // Update the state of the app.
-                // ...
-              },
-            ),
-            ListTile(
-              title: Text('القوائم'),
-              onTap: () {
-                Navigator.pop(context);
-                // Update the state of the app.
-                // ...
-              },
-            ),
-
-            Container(
-              color: Colors.black12,
-              height: 5,
-            ),
-
-            ListTile(
-              title: Text('الصفحة الرئيسية'),
-              onTap: () {
-                Navigator.pop(context);
-                // Update the state of the app.
-                // ...
-              },
-            ),
-            ListTile(
-              title: Text('تسوق حسب القسم'),
-              onTap: () {
-                Navigator.pop(context);
-                // Update the state of the app.
-                // ...
-              },
-            ),
-            ListTile(
-              title: Text('عروض اليوم'),
-              onTap: () {
-                Navigator.pop(context);
-                // Update the state of the app.
-                // ...
-              },
-            ),
-            Container(
-              color: Colors.black12,
-              height: 5,
-            ),
-
-            ListTile(
-              title: Text(
-                'المساعدة والإعدادات',
-                style: TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-                // Update the state of the app.
-                // ...
-              },
-            ),
-            ListTile(
-              title: Text('حسابك'),
-              onTap: () {
-                Navigator.pop(context);
-                // Update the state of the app.
-                // ...
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.language),
-              title: Text('العربية'),
-              onTap: () {
-                Navigator.pop(context);
-                // Update the state of the app.
-                // ...
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.flag),
-              title: Text(' المملكة العربية السعودية'),
-              onTap: () {
-                Navigator.pop(context);
-                // Update the state of the app.
-                // ...
-              },
-            ),
-
-            ListTile(
-              title: Text('خدمة العملاء'),
-              onTap: () {
-                Navigator.pop(context);
-                // Update the state of the app.
-                // ...
-              },
-            ),
-
-            ListTile(
-              title: Text('تسجيل الدخول'),
-              onTap: () {
-                Navigator.pop(context);
-                // Update the state of the app.
-                // ...
-              },
-            ),
-          ],
-        ),
-      ),
+      drawer: buildDrawer(context),
       backgroundColor: Colors.white,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(100),
@@ -233,7 +88,6 @@ class _HomeScreenState extends State<HomeScreen> {
             children: <Widget>[
               AppBar(
                 /// Good Morning
-
                 backgroundColor: Colors.blueGrey[900],
                 leading: Row(
                   mainAxisSize: MainAxisSize.min,
@@ -289,12 +143,19 @@ class _HomeScreenState extends State<HomeScreen> {
                       Padding(
                         padding: EdgeInsets.only(top: 12.0, left: 10.0),
                         child: InkResponse(
-                          onTap: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => CartScreen(),
-                            ),
-                          ),
+                          onTap: () {
+                            if (cartitems.isNotEmpty){
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => CartScreen(cartitems,product),
+                                ),
+                              );
+                            }else{
+                              log("Cart items : ${cartitems.length}");
+                            }
+
+                          },
                           child: Icon(
                             Icons.shopping_cart,
                             size: 30.0,
@@ -314,7 +175,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           child: Center(
                             child: Text(
-                              '5',
+                              '${cartitems.length}',
                               style: TextStyle(
                                 color: Colors.orange,
                                 fontWeight: FontWeight.bold,
@@ -351,7 +212,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           ProductItem(0),
-
           Image.asset(offersImages2[0]),
           Divider(
             height: 5,
@@ -360,17 +220,14 @@ class _HomeScreenState extends State<HomeScreen> {
           Divider(
             height: 5,
           ),
-
           Image.asset(offersImages2[2]),
           Divider(
             height: 5,
           ),
-
           Image.asset(offersImages2[3]),
-
           ProductList(
             title: 'عروض اليوم',
-            products: products,
+            products: mobiles,
           ),
           ProductList(
             title: 'آلعاب آطفال',
@@ -384,6 +241,171 @@ class _HomeScreenState extends State<HomeScreen> {
 //            title: 'Popular Books',
 //            products: books,
 //          ),
+        ],
+      ),
+    );
+  }
+
+  Drawer buildDrawer(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        // Important: Remove any padding from the ListView.
+        padding: EdgeInsets.zero,
+        children: <Widget>[
+//            UserAccountsDrawerHeader(
+//              accountName: Text("Ashish Rawat"),
+//              accountEmail: Text("ashishrawat2911@gmail.com"),
+//              currentAccountPicture: CircleAvat ar(
+//                backgroundColor:
+//                    Theme.of(context).platform == TargetPlatform.iOS
+//                        ? Colors.blue
+//                        : Colors.white,
+//                child: Text(
+//                  "A",
+//                  style: TextStyle(fontSize: 40.0),
+//                ),
+//              ),
+//            ),
+          DrawerHeader(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                CircleAvatar(
+                  radius: 15.0,
+                  backgroundColor: Colors.white,
+                  backgroundImage: AssetImage("assets/images/man.png"),
+                ),
+                Expanded(
+                    child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    ' مرحباً.  MaNoOoz',
+                    style: TextStyle(color: Colors.white, fontSize: 23),
+                  ),
+                )),
+              ],
+            ),
+            decoration: BoxDecoration(
+              color: Colors.blueGrey[900],
+            ),
+          ),
+          ListTile(
+            title: Text('الحساب'),
+            onTap: () {
+              // Update the state of the app.
+              // ...
+            },
+          ),
+          ListTile(
+            title: Text('المشتريات'),
+            onTap: () {
+              Navigator.pop(context);
+              // Update the state of the app.
+              // ...
+            },
+          ),
+          ListTile(
+            title: Text('القوائم'),
+            onTap: () {
+              Navigator.pop(context);
+              // Update the state of the app.
+              // ...
+            },
+          ),
+
+          Container(
+            color: Colors.black12,
+            height: 5,
+          ),
+
+          ListTile(
+            title: Text('الصفحة الرئيسية'),
+            onTap: () {
+              Navigator.pop(context);
+              // Update the state of the app.
+              // ...
+            },
+          ),
+          ListTile(
+            title: Text('تسوق حسب القسم'),
+            onTap: () {
+              Navigator.pop(context);
+              // Update the state of the app.
+              // ...
+            },
+          ),
+          ListTile(
+            title: Text('عروض اليوم'),
+            onTap: () {
+              Navigator.pop(context);
+              // Update the state of the app.
+              // ...
+            },
+          ),
+          Container(
+            color: Colors.black12,
+            height: 5,
+          ),
+
+          ListTile(
+            title: Text(
+              'المساعدة والإعدادات',
+              style: TextStyle(
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            onTap: () {
+              Navigator.pop(context);
+              // Update the state of the app.
+              // ...
+            },
+          ),
+          ListTile(
+            title: Text('حسابك'),
+            onTap: () {
+              Navigator.pop(context);
+              // Update the state of the app.
+              // ...
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.language),
+            title: Text('العربية'),
+            onTap: () {
+              Navigator.pop(context);
+              // Update the state of the app.
+              // ...
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.flag),
+            title: Text(' المملكة العربية السعودية'),
+            onTap: () {
+              Navigator.pop(context);
+              // Update the state of the app.
+              // ...
+            },
+          ),
+
+          ListTile(
+            title: Text('خدمة العملاء'),
+            onTap: () {
+              Navigator.pop(context);
+              // Update the state of the app.
+              // ...
+            },
+          ),
+
+          ListTile(
+            title: Text('تسجيل الدخول'),
+            onTap: () {
+              Navigator.pop(context);
+              // Update the state of the app.
+              // ...
+            },
+          ),
         ],
       ),
     );

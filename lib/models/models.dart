@@ -24,7 +24,7 @@ final List<Product> products = [
   ),
   Product(
     imageUrl: 'assets/images/z1.jpg',
-    name: 'Blue Yeti USB Microphone',
+    name: 'IPhone 6 Plus (64) Gray',
     price: 109.99,
     description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A condimentum vitae sapien pellentesque habitant morbi tristique senectus et. Auctor neque vitae tempus quam pellentesque nec. Volutpat consequat mauris nunc congue nisi. Commodo ullamcorper a lacus vestibulum sed arcu non odio euismod. Aliquam id diam maecenas ultricies mi eget.',
@@ -134,7 +134,7 @@ final List<IconData> mIcons = [
 
 final List<Product> cart = [
   products[3],
-  books[2],
+  mobiles[1],
   products[1],
   books[0],
   products[4],

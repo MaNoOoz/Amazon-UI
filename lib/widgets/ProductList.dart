@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_amazon_ui_redesign/models/models.dart';
+import 'package:flutter_amazon_ui_redesign/screens/ProductDetails.dart';
 
 class ProductList extends StatelessWidget {
   final String title;
@@ -11,56 +12,90 @@ class ProductList extends StatelessWidget {
     this.products,
   });
 
-  card(int index) {
-    return Container(
-      margin: EdgeInsets.all(10.0),
-      padding: EdgeInsets.all(10.0),
-      width: 150.0,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black26,
-            offset: Offset(0.0, 2.0),
-            blurRadius: 6.0,
+  card(int index, context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ProductDetails(products[index]),
           ),
-        ],
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Container(
-            color: Colors.white,
-            child: Image(
-              image: AssetImage(products[index].imageUrl),
-              height: 100.0,
-              width: 150.0,
+        );
+      },
+      child: Container(
+        margin: EdgeInsets.all(10.0),
+        padding: EdgeInsets.all(10.0),
+        width: 150.0,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black26,
+              offset: Offset(0.0, 2.0),
+              blurRadius: 6.0,
             ),
-          ),
-          SizedBox(height: 8.0),
-          Text(
-            products[index].name,
-            style: TextStyle(
-              fontSize: 18.0,
-              fontWeight: FontWeight.bold,
-            ),
-            textAlign: TextAlign.center,
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              Text(
-                ' ${(products[index].price.toStringAsFixed(2))} - ${(products[index].price + 100).toStringAsFixed(2)} ريال ',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.bold,
-                ),
+          ],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Container(
+              color: Colors.white,
+              child: Image(
+                image: AssetImage(products[index].imageUrl),
+                height: 100.0,
+                width: 150.0,
               ),
-              SizedBox(height: 4.0),
-            ],
-          ),
-        ],
+            ),
+            SizedBox(height: 8.0),
+            Text(
+              products[index].name,
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                Text(
+                  ' ${(products[index].price.toStringAsFixed(
+                      2))} - ${(products[index].price + 100).toStringAsFixed(
+                      2)} ريال ',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(height: 4.0),
+              ],
+            ),
+//            Container(
+//              margin: EdgeInsets.only(top: 10),
+//              height: 20,
+//              child: FlatButton(
+//                child: Container(
+//                  child: Row(
+//                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                    children: <Widget>[
+//                      Text("See all deals",
+//                        style: TextStyle(color: Colors.blue,),),
+//                      Icon(
+//                        Icons.arrow_forward_ios, color: Colors.blue, size: 15,)
+//                    ],
+//                  ),
+//                ),
+//                onPressed: () {
+//
+//                },
+//              ),
+//            )
+          ],
+
+
+        ),
       ),
     );
   }
@@ -87,7 +122,7 @@ class ProductList extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             itemCount: products.length,
             itemBuilder: (BuildContext context, int index) {
-              return card(index);
+              return card(index, context);
             },
           ),
         ),
@@ -206,7 +241,9 @@ class ProductItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
               Text(
-                ' ${(products[index].price.toStringAsFixed(2))} - ${(products[index].price + 100).toStringAsFixed(2)} ريال ',
+                ' ${(products[index].price.toStringAsFixed(
+                    2))} - ${(products[index].price + 100).toStringAsFixed(
+                    2)} ريال ',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 18.0,

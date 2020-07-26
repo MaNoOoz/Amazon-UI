@@ -35,6 +35,7 @@ class _splashScreenState extends State<splashScreen> {
     );
   }
 }
+
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
 
@@ -50,7 +51,11 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.tajawalTextTheme(textTheme),
       ),
       home:
-          Directionality(textDirection: TextDirection.rtl, child: HomeScreen()),
+          Directionality(textDirection: TextDirection.rtl,
+              child: HomeScreen(
+
+
+          )),
     );
   }
 }
